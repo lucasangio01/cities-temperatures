@@ -99,7 +99,7 @@ class BigCities:
     # input, the map will be 3D or 2D.
 
     def majorCitiesMap(self, projection):
-        geo_df = gpd.read_file(r"C:\Users\sangi\Desktop\Info progetto python\Datasets\majorCities.csv", index_col=0)
+        geo_df = gpd.read_file(Data.path + "/majorCities.csv", index_col=0)
         fig = px.scatter_geo(geo_df, lat="Latitude", lon="Longitude", hover_name="City",
                              hover_data=["Country", "Latitude", "Longitude"])
         fig.update_geos(showocean=True, oceancolor="grey", projection_type=projection)
