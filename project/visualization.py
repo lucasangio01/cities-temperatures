@@ -5,7 +5,7 @@ import seaborn as sns
 import plotly.express as px
 from geopy.distance import geodesic
 from countryinfo import CountryInfo
-from project.utils import Data
+from utils import Data
 
 
 class CityCountry:
