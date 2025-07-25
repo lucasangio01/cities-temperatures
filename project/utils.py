@@ -54,7 +54,7 @@ class DownloadNewCoordinates:
     def MCconversion(self):
         majorCities = Data.tempByMajorCity[["City", "Country", "Latitude", "Longitude"]].groupby(
             ["City"]).first().reset_index()
-        key = " " # Insert here a valid key
+        key = " " # hidden for privacy. Create one to run the code
         geocoder = OpenCageGeocode(key)
         list_lat = []
         list_lon = []
