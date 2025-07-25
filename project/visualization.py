@@ -9,8 +9,8 @@ from utils import Data
 
 
 class CityCountry:
-    numCities = Data.cities.drop(["Latitude", "Longitude", "Continent", "Subregion"], axis=1).groupby(
-        "Country").count().sort_values(by="City", ascending=False)
+    numCities = Data.cities.drop(["Latitude", "Longitude", "Continent", "Subregion"], axis = 1).groupby(
+        "Country").count().sort_values(by = "City", ascending = False)
 
     # The following function prints a small dataframe containing the countries that have most cities in the dataset.
 
@@ -24,8 +24,8 @@ class CityCountry:
     def byCountry_Plot(self):
         plt.figure(figsize=(12, 5))
         plt.bar(CityCountry.numCities.index[:15], CityCountry.numCities.City[:15], color="brown")
-        plt.xticks(rotation=70)
-        plt.title("Number of cities in the dataset, by country\n", fontsize=18)
+        plt.xticks(rotation = 70)
+        plt.title("Number of cities in the dataset, by country\n", fontsize = 18)
 
     # The following function generates a map of a chosen country, showing all the cities that are part of it.
 

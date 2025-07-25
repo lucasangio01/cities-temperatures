@@ -10,7 +10,7 @@ from visualization import CityCountry, BigCities, Temperatures
 from utils import Data
 import warnings
 
-warnings.filterwarnings("ignore", category=UserWarning, module="streamlit")
+warnings.filterwarnings("ignore", category = UserWarning, module = "streamlit")
 
 
 # The Sidebar class contains the data related to the creation of the sidebar menu, from which the user can choose to
@@ -19,7 +19,7 @@ warnings.filterwarnings("ignore", category=UserWarning, module="streamlit")
 
 
 class Sidebar:
-    st.set_page_config(page_title="Weather data project", layout="wide", initial_sidebar_state="expanded", )
+    st.set_page_config(page_title = "Weather data project", layout = "wide", initial_sidebar_state = "expanded", )
     with st.sidebar:
         options = option_menu("Weather data project", ["Main menu", "Cities overview", "Country information",
                                                        "Temperatures charts and map", "Temperatures shock"],
