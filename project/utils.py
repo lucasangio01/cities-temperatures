@@ -1,6 +1,8 @@
 from opencage.geocoder import OpenCageGeocode
 from countryinfo import CountryInfo
 import pandas as pd
+from dotenv import load_dotenv
+import os
 
 
 # The following class contains the imported data and data that I used frequently in other functions.
@@ -54,8 +56,9 @@ class DownloadNewCoordinates:
     def MCconversion(self):
         majorCities = Data.tempByMajorCity[["City", "Country", "Latitude", "Longitude"]].groupby(
             ["City"]).first().reset_index()
-        key = " " # hidden for privacy. Create one to run the code
-        geocoder = OpenCageGeocode(key)
+        load_dotenv()
+        api_key = os.getenv("API_KEY")
+        geocoder = OpenCageGeocode(api_key)
         list_lat = []
         list_lon = []
         for index, row in majorCities.iterrows():
