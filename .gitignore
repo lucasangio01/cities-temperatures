@@ -2,4 +2,4 @@
 .venv/
 .env
 .idea
-project/__pycache__/
+*.pyc
