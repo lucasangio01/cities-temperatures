@@ -6,11 +6,8 @@ import requests
 from countryinfo import CountryInfo
 from PIL import Image
 from geopy.distance import geodesic
-from visualization import CityCountry, BigCities, Temperatures
-from utils import Data
-import warnings
-
-warnings.filterwarnings("ignore", category=UserWarning, module="streamlit")
+from project.visualization import CityCountry, BigCities, Temperatures
+from project.utils import Data
 
 
 # The Sidebar class contains the data related to the creation of the sidebar menu, from which the user can choose to
@@ -19,6 +16,7 @@ warnings.filterwarnings("ignore", category=UserWarning, module="streamlit")
 
 
 class Sidebar:
+    st.set_option('deprecation.showPyplotGlobalUse', False)
     st.set_page_config(page_title="Weather data project", layout="wide", initial_sidebar_state="expanded", )
     with st.sidebar:
         options = option_menu("Weather data project", ["Main menu", "Cities overview", "Country information",
