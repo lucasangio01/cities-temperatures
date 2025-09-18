@@ -3,14 +3,28 @@ from countryinfo import CountryInfo
 import pandas as pd
 from dotenv import load_dotenv
 import os
+import zipfile
 
 
 # The following class contains the imported data and data that I used frequently in other functions.
 
 class Data:
+    def download_dataset():
+        load_dotenv()
+        from kaggle.api.kaggle_api_extended import KaggleApi
+
+        if not os.path.exists("../datasets/GlobalLandTemperaturesByCity.csv"):
+            api = KaggleApi()
+            api.authenticate()
+            api.dataset_download_files(dataset = "berkeleyearth/climate-change-earth-surface-temperature-data", path = "../datasets/", unzip = True)
+            os.remove("../datasets/GlobalLandTemperaturesByCountry.csv")
+            os.remove("../datasets/GlobalLandTemperaturesByState.csv")
+            os.remove("../datasets/GlobalTemperatures.csv")
+
+    download_dataset()
     path = "https://raw.githubusercontent.com/lucasangio01/cities-temperatures/main/datasets"
-    tempByCity = pd.read_csv("C:/Users/sangi/Downloads/GlobalLandTemperaturesByCity/GlobalLandTemperaturesByCity.csv").dropna().reset_index(drop=True)
-    tempByMajorCity = pd.read_csv(path + "/GlobalLandTemperaturesByMajorCity.csv").dropna().reset_index(drop=True)
+    tempByCity = pd.read_csv("../datasets/GlobalLandTemperaturesByCity.csv").dropna().reset_index(drop=True)
+    tempByMajorCity = pd.read_csv("../datasets/GlobalLandTemperaturesByMajorCity.csv").dropna().reset_index(drop=True)
     majorCities = pd.read_csv(path + "/majorCities.csv", index_col=0)
     cities = pd.read_csv(path + "/cities.csv", index_col=0)
     cities_old = pd.read_csv(path + "/cities_old.csv", index_col=0, on_bad_lines="skip")
@@ -54,10 +68,10 @@ def add_continents():
 class DownloadNewCoordinates:
 
     def MCconversion(self):
+        load_dotenv()
         majorCities = Data.tempByMajorCity[["City", "Country", "Latitude", "Longitude"]].groupby(
             ["City"]).first().reset_index()
-        load_dotenv()
-        api_key = os.getenv("API_KEY")
+        api_key = os.getenv("API_KEY_COORDINATES")
         geocoder = OpenCageGeocode(api_key)
         list_lat = []
         list_lon = []

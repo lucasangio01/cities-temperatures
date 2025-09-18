@@ -3,5 +3,9 @@
 .env
 .idea
 project/__pycache__/
-project/.ipynb_checpoints/
-.idea/
+project/.ipynb_checkpoints/
+datasets/GlobalLandTemperaturesByCity.csv
+datasets/GlobalLandTemperaturesByState.csv
+datasets/GlobalLandTemperaturesByCountry.csv
+datasets/GlobalTemperatures.csv
+datasets/GlobalLandTemperaturesByMajorCity.csv
