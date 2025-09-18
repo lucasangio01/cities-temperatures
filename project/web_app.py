@@ -11,7 +11,7 @@ from utils import Data
 import warnings
 
 warnings.filterwarnings("ignore", category = UserWarning, module = "streamlit")
-Data.download_dataset()
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 # The Sidebar class contains the data related to the creation of the sidebar menu, from which the user can choose to
@@ -45,9 +45,9 @@ class MainMenu:
         st.write("Have fun!")
         st.write("")
         col1, col2, col3 = st.columns(
-            [0.27, 0.38, 0.35])  # Percentage of occupation of each column (to fit the images correctly)
+            [0.26, 0.40, 0.34])  # Percentage of occupation of each column (to fit the images correctly)
         url1 = "https://www.weather.gov/images/ffc/events/severe_011114/500mb_140112.png"
-        url2 = ("https://image.cnbcfm.com/api/v1/image/106140709-1568982403673gettyimages-1169784640.jpeg?v=1568992875")
+        url2 = ("https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.upp-prod-eu.s3.amazonaws.com%2F34839bfc-dbb6-11e9-9c26-419d783e10e8?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1")
         url3 = ("https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1638892168/EducationHub/photos/lightning-grand-canyon.jpg")
         img1 = Image.open(requests.get(url1, stream=True).raw)
         img2 = Image.open(requests.get(url2, stream=True).raw)

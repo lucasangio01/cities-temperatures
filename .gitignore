@@ -1,7 +1,7 @@
 # created by virtualenv automatically
 .venv/
 .env
-.idea
+.idea/
 project/__pycache__/
 project/.ipynb_checkpoints/
 datasets/GlobalLandTemperaturesByCity.csv
